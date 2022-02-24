@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LandscapeLayout">
         <activity
+            android:name=".SquareActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -20,4 +23,7 @@
         </activity>
     </application>
 
+    <!--if you set up certain permission here without setting up checks for the user,
+    would it automatically gain access to the user device in these ways?
+    <uses-permission android:name="" -->
 </manifest>
