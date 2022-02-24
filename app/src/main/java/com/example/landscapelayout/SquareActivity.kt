@@ -48,17 +48,21 @@ class SquareActivity : AppCompatActivity() {
     }
 
     private fun squareTapped(didTapSquare: Boolean) {
-        // TODO send message back to main activity with boolean value
-        // end square activity
-//        Toast.makeText(this, "square tapped $didTapSquare", Toast.LENGTH_SHORT).show()
+//        // send message back to main activity with boolean value
+//        // end square activity
+////        Toast.makeText(this, "square tapped $didTapSquare", Toast.LENGTH_SHORT).show()
+//        // create intent to carry the data back to MainActivity
+//        val resultIntent = Intent()
+//        resultIntent.putExtra(EXTRA_TAPPED_INSIDE_SQUARE, didTapSquare)
+//        setResult(RESULT_OK, resultIntent)
+//        finish() // means end this activity
 
-        // create intent to carry the data back to MainActivity
-        val resultIntent = Intent()
-        resultIntent.putExtra(EXTRA_TAPPED_INSIDE_SQUARE, didTapSquare)
-
-        setResult(RESULT_OK, resultIntent)
-        finish() // means end this activity
-
+        // another cleaner way to write:
+        Intent().apply {
+            putExtra(EXTRA_TAPPED_INSIDE_SQUARE, didTapSquare)
+            setResult(RESULT_OK, this)
+            finish()
+        }
 
     }
 

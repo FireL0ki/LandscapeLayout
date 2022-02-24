@@ -61,23 +61,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSquare() {
-        // launch the SquareActivity -- use intent, sent to Android system,
-        // it will check which activity, make sure it's allowed, etc. Then Android system
-        // will close/end mainActivity and run the new activity
+        // launch the SquareActivity -- use intent, it's sent to Android system, which will find the activity
+        // and close/end mainActivity and run the new one.
         // all activities extend the android activity class (which is a java class)
-        // asking the android system to make the activity
         // 'this' refers to the current object, the instance of mainActivity
         val showSquareIntent = Intent(this, SquareActivity::class.java)
-
         // this function takes a key (the key we built above as a global variable) and a value
         // our value is the progress of the seekbar, which we pass to the show square activity
         // so it can set the size of the square
         showSquareIntent.putExtra(EXTRA_SQUARE_SIZE, seekBar.progress)
 //        startActivity(showSquareIntent)
         squareResultLauncher.launch(showSquareIntent)
-
         // Tell the SquareActivity how large the square should be
         // based on the progress of the Seekbar
+
+
+        // another way to write:
+//        Intent(this, SquareActivity::class.java).apply {
+//            putExtra(EXTRA_SQUARE_SIZE, seekBar.progress)
+//            squareResultLauncher.launch(this)
+//        }
+
     }
 
     private fun handleSquareResult(result: ActivityResult) {
